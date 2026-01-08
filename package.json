@@ -1,0 +1,29 @@
+{
+  "name": "statts",
+  "version": "0.1.0",
+  "description": "Fundamental statistical library written in TypeScript",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": [
+    "statistics",
+    "data-science",
+    "math",
+    "typescript"
+  ],
+  "author": "Cauã",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "ts-node": "^10.9.2",
+    "@types/node": "^25.0.3",
+    "vitest": "^4.0.16"
+  }
+}
