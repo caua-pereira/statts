@@ -1,16 +1,22 @@
-/**
- * 1. Média Aritmética
- * Definição: Soma de todos os valores dividida pela quantidade de valores.
- */
-
 import { error } from "node:console";
 
+/**
+ * Valida se um array de números não está vazio
+ * @param vetor - Array de números a ser verificado
+ * @param operacao - Nome da operação para mensagem de erro personalizada
+ * @throws {Error} Se o array estiver vazio
+ */
 const verificaArrayVazio = (vetor: number[], operacao: string) => {
     if (vetor.length === 0) 
         throw new Error(`O cálculo da ${operacao} não está definido para conjuntos de dados vazios.`);    
 }
 
-
+/**
+ * Calcula a média aritmética simples de um conjunto de valores númericos
+ * @param valores - Array de números para cálculo da média
+ * @returns A média aritmética dos valores
+ * @throws {Error} Se o array estiver vazio
+ */
 export function mediaAritmetica(valores: number[]): number {
     verificaArrayVazio(valores, "média aritmetica" );
     const somaDosValores: number = valores.reduce((acumulador, elemento) => {return acumulador + elemento}, 0);
@@ -18,10 +24,14 @@ export function mediaAritmetica(valores: number[]): number {
 }
 
 /**
- * 2. Média Ponderada
- * Definição: Cada valor é multiplicado por um peso, somando-se esses produtos e dividindo pela soma dos pesos.
+ * Calcula a média ponderada de um conjunto de valores numéricos
+ * @param valores - Array de números para cálculo 
+ * @param pesos - Array de pesos correspondentes aos valores
+ * @returns A média ponderada dos valores
+ * @throws {Error} Se o array de valores estiver vazio
+ * @throws {Error} Se os arrays tiverem tamanho diferentes
+ * @throws {Error} Se a soma dos pesos for muito próxima de zero
  */
-
 export function mediaPonderada(valores: number[], pesos: number[]): number {
     verificaArrayVazio(valores, "média ponderada");
 
@@ -39,11 +49,13 @@ export function mediaPonderada(valores: number[], pesos: number[]): number {
     return numerador/denominador;
 }
 
-/*
- * 3. Média Geométrica
- * Definição: A n-ésima raiz do produto de todos os valores (onde n é a quantidade de valores). 
+/** 
+ * Calcula a média geométrica de um conjunto de valores positivos
+ * @param valores - Array de números positivos (> 0) para cálculo
+ * @returns A média geometrica dos valores
+ * @@throws {Error} Se o array estiver vazio
+ * @@throws {Error} Se houver alguma valor menor ou igual a zero 
  */
-
 export function mediaGeometrica(valores: number[]): number {
     verificaArrayVazio(valores, "média geométrica");
 
@@ -56,11 +68,14 @@ export function mediaGeometrica(valores: number[]): number {
     return Math.pow(produtoDosValores, 1/valores.length);
 }
 
-/*
- * 4. Média Harmônica
- * Definição: O inverso da média aritmética dos inversos dos valores.
+/** 
+ * Calcula a média harmônica de um conjunto de valores positivos
+ * @param valores - Array de números positivos (> 0) para cálculo
+ * @returs  A média harmônica dos valores
+ * @throws {Error} Se o array estiver vazio
+ * @throws {Error} Se algum valor for igual a zero
+ * @throws {Error} Se a soma dos inversos for muito próxima de zero
  */
-
 export function mediaHarmonica(valores: number[]): number {
     verificaArrayVazio(valores, "média harmônica");
 
