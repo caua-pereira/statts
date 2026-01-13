@@ -39,7 +39,7 @@ export function mediaPonderada(valores: number[], pesos: number[]): number {
         throw new Error('A quantidade de pesos deve ser igual a quantidade de valores do conjunto.');
     }
 
-    const numerador: number = valores.reduce((acumulador, elemento, indice) => {return acumulador + elemento * pesos[indice]}, 0);
+    const numerador: number = valores.reduce((acumulador, elemento, indice) => {return acumulador + elemento * pesos[indice]!}, 0);
     const denominador: number = pesos.reduce((acumulador, elemento) => {return acumulador + elemento}, 0);
 
     if(Math.abs(denominador) < Number.EPSILON) { // como EPSILON é o menor número possível entre 1 e o próximo número, daí: "se for muito, muito próximo de zero"
