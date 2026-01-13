@@ -18,7 +18,7 @@ const verificaArrayVazio = (vetor: number[], operacao: string) => {
  * @throws {Error} Se o array estiver vazio
  */
 export function mediaAritmetica(valores: number[]): number {
-    verificaArrayVazio(valores, "média aritmetica" );
+    verificaArrayVazio(valores, "média aritmética" );
     const somaDosValores: number = valores.reduce((acumulador, elemento) => {return acumulador + elemento}, 0);
     return somaDosValores/valores.length;
 }
@@ -36,7 +36,7 @@ export function mediaPonderada(valores: number[], pesos: number[]): number {
     verificaArrayVazio(valores, "média ponderada");
 
     if(valores.length !== pesos.length) {
-        throw new Error('A quatidade de pesos deve ser igual a quantidade de valores do conjunto.');
+        throw new Error('A quantidade de pesos deve ser igual a quantidade de valores do conjunto.');
     }
 
     const numerador: number = valores.reduce((acumulador, elemento, indice) => {return acumulador + elemento * pesos[indice]}, 0);
@@ -53,8 +53,8 @@ export function mediaPonderada(valores: number[], pesos: number[]): number {
  * Calcula a média geométrica de um conjunto de valores positivos
  * @param valores - Array de números positivos (> 0) para cálculo
  * @returns A média geometrica dos valores
- * @@throws {Error} Se o array estiver vazio
- * @@throws {Error} Se houver alguma valor menor ou igual a zero 
+ * @throws {Error} Se o array estiver vazio
+ * @throws {Error} Se houver alguma valor menor ou igual a zero 
  */
 export function mediaGeometrica(valores: number[]): number {
     verificaArrayVazio(valores, "média geométrica");
@@ -71,7 +71,7 @@ export function mediaGeometrica(valores: number[]): number {
 /** 
  * Calcula a média harmônica de um conjunto de valores positivos
  * @param valores - Array de números positivos (> 0) para cálculo
- * @returs  A média harmônica dos valores
+ * @returns  A média harmônica dos valores
  * @throws {Error} Se o array estiver vazio
  * @throws {Error} Se algum valor for igual a zero
  * @throws {Error} Se a soma dos inversos for muito próxima de zero
