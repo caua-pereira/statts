@@ -20,10 +20,6 @@ const ordenaArrayCrescente = (vetor: number[]): number[] => { // retorna um novo
 /**
  * 
  */
-const ordenaArrayCrescenteReferencia = (vetor: number[]): void => { // retorna o array original modificado
-    vetor.sort((a, b) => a - b);
-}
-
 export function mediana(valores: number[]): number {
     verificaArrayVazio(valores, "mediana");
     const valoresOrdenados: number[] = ordenaArrayCrescente(valores);
@@ -35,3 +31,40 @@ export function mediana(valores: number[]): number {
         return valoresOrdenados[meio]!;
     }
 }
+
+/**
+ * 
+ */
+export function quantil(valores: number[], quantil_: number): number {
+    if(quantil_ < 0 || quantil_ > 1) {
+        throw new Error('valor do quantil é inválido para a operação, o valor deve estar no intervalo [0 , 1]');
+    }
+
+    verificaArrayVazio(valores, "posicão do quantil");
+    const valoresOrdenados: number[] = ordenaArrayCrescente(valores);
+    const posicao: number = quantil_ * (valores.length - 1);
+
+    const indiceBase = Math.floor(posicao);
+    const resto = posicao - indiceBase;
+
+    if (valoresOrdenados[indiceBase + 1] === undefined) {
+        return valoresOrdenados[indiceBase]!;
+    }
+    return valoresOrdenados[indiceBase]! + resto * (valoresOrdenados[indiceBase + 1]! - valoresOrdenados[indiceBase]!);
+}
+
+/**
+ * 
+ */
+export function quartis(valores: number[]): [number, number, number] {
+    return [quantil(valores, 0.25), quantil(valores, 0.5), quantil(valores, 0.75)];
+}
+
+/**
+ * Calcula a Amplitude Interquartílica (IQR)
+ * Útil para detectar Outliers 
+ */
+export const calcularIQR = (valores: number[]): number => {
+    const valoresQuartis = quartis(valores);
+    return valoresQuartis[2] - valoresQuartis[0];
+};
