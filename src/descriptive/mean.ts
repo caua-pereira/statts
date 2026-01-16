@@ -6,7 +6,7 @@ import { error } from "node:console";
  * @param operacao - Nome da operação para mensagem de erro personalizada
  * @throws {Error} Se o array estiver vazio
  */
-const verificaArrayVazio = (vetor: number[], operacao: string) => {
+const verificaArrayVazio = (vetor: number[], operacao: string): void => {
     if (vetor.length === 0) 
         throw new Error(`O cálculo da ${operacao} não está definido para conjuntos de dados vazios.`);    
 }
@@ -39,7 +39,7 @@ export function mediaPonderada(valores: number[], pesos: number[]): number {
         throw new Error('A quantidade de pesos deve ser igual a quantidade de valores do conjunto.');
     }
 
-    const numerador: number = valores.reduce((acumulador, elemento, indice) => {return acumulador + elemento * pesos[indice]!}, 0);
+    const numerador: number = valores.reduce((acumulador, elemento, indice) => {return acumulador + elemento * pesos[indice]}, 0);
     const denominador: number = pesos.reduce((acumulador, elemento) => {return acumulador + elemento}, 0);
 
     if(Math.abs(denominador) < Number.EPSILON) { // como EPSILON é o menor número possível entre 1 e o próximo número, daí: "se for muito, muito próximo de zero"
